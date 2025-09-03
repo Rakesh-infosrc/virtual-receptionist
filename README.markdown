@@ -1,125 +1,185 @@
-# Virtual Receptionist: AI-Powered Virtual Assistant
+# Virtual Receptionist 🤖  
 
-## Overview
-Virtual Receptionist is an AI-powered virtual receptionist designed to handle intelligent tasks for an IT company. Built using **LiveKit**, it leverages real-time communication, natural language processing, and external APIs to assist employees, candidates, and visitors. The agent, named **Divya**, can greet users, fetch weather updates, send emails, perform web searches, and retrieve employee or candidate details from CSV files. Additionally, it supports **Tavus** for avatar-based interactions, providing a lifelike visual experience for users.
+Divya is an **AI-powered virtual receptionist** for an Info Services company. She acts as the first point of contact for anyone visiting — employees, interview candidates, or walk-in visitors. Divya verifies identities, notifies the right people, and keeps a record of visits.  
 
-This project is inspired by the [LiveKit Tutorial on YouTube](https://youtu.be/An4NwL8QSQ4?si=1pLISaiUBGafE8XJ), which demonstrates building a JARVIS-like AI agent.
+---
 
-## Features
-- **Greetings & Personalization**: Divya greets employees and candidates by name, offering a professional and warm interaction.
-- **Weather Updates**: Retrieves current weather for a specified city using the `wttr.in` API.
-- **Web Search**: Performs web searches via DuckDuckGo.
-- **Email Sending**: Sends emails through Gmail using SMTP.
-- **Employee/Candidate Lookup**: Fetches details from CSV files for employees or interview candidates.
-- **Noise Cancellation**: Utilizes LiveKit's noise cancellation for clear audio interactions.
-- **Real-Time Interaction**: Powered by LiveKit's real-time communication framework and Google’s RealtimeModel for natural language processing.
-- **Tavu Avatar Integration**: Provides a realistic avatar for Divya using Tavus’s API, enhancing the user experience with visual and voice interactions.
+## ✨ Features  
 
-## Prerequisites
-- **Python 3.8+**
-- **LiveKit Cloud Account**: Obtain API keys from [LiveKit Cloud](https://livekit.io/).
-- **Google Cloud Account**: For Google’s RealtimeModel API key.
-- **Gmail Account**: Configure an App Password for email functionality.
-- **Tavus Account**: Required for avatar-based interactions. Sign up at [Tavus](https://www.tavus.io/) to obtain `PERSONA_ID`, `REPLICA_ID`, and `TAVUS_API_KEY`.
-- CSV files (`employees.csv`, `candidates.csv`) with appropriate data in the project directory.
+✅ **Employee Verification**  
+- Enter Name + Employee ID.  
+- Receive OTP via email.  
+- Secure login with retry limit.  
 
-## Installation
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/yourusername/virtual-receptionist.git
-   cd virtual-receptionist
-   ```
+✅ **Candidate Verification**  
+- Provide Interview Code + Name.  
+- Divya notifies the assigned interviewer by email.  
 
-2. **Install Dependencies**:
-   Ensure you have `pip` installed, then run:
-   ```bash
-   pip install -r requirements.txt
-   ```
+✅ **Visitor Registration**  
+- Enter Name, Phone Number, Purpose, and Employee to meet.  
+- Visitor logged in `visitor_log.csv`.  
+- Host employee notified by email.  
 
-3. **Set Up Environment Variables**:
-   Create a `.env` file in the project root and populate it with the following:
-   ```plaintext
-   LIVEKIT_URL=<your-livekit-url>
-   LIVEKIT_API_KEY=<your-livekit-api-key>
-   LIVEKIT_API_SECRET=<your-livekit-api-secret>
-   GOOGLE_API_KEY=<your-google-api-key>
-   GMAIL_APP_PASSWORD=<your-gmail-app-password>
-   GMAIL_USER=<your-gmail-email>
-   PERSONA_ID=<your-tavus-personapitfall
-   REPLICA_ID=<your-tavus-replica-id>
-   TAVUS_API_KEY=<your-tavus-api-key>
-   ```
+✅ **Manager Visit Greeting**  
+- Managers listed in `manager_visit.csv` get a **VIP greeting** if visiting today’s office.  
 
-4. **Prepare CSV Files**:
-   Place `employees.csv` and `candidates.csv` in the `dummy-data` directory. Expected formats:
-   - **employees.csv**: Columns: `name`, `department`, `role`, `email`
-   - **candidates.csv**: Columns: `name`, `position`, `interview_time`, `email`
+✅ **Company Info Access**  
+- Divya can answer company-related FAQs (from `company_info.pdf`).  
 
-## Usage
-1. **Run the Agent**:
-   Follow these steps to run the agent in different modes:
-   - **Step 1**: Activate the virtual environment:
-     ```bash
-     .\venv\Scripts\activate
-     ```
-   - **Step 2**: Run in console mode (terminal-based interaction):
-     ```bash
-     python agent.py console
-     ```
-   - **Step 3**: Run with LiveKit for camera access (enables webcam and microphone):
-     ```bash
-     python agent.py dev
-     ```
-   - **Step 4**: Access the LiveKit Playground for a web-based interface:
-     Open [LiveKit Playground](https://agents-playground.livekit.io/#cam=1&mic=1&screen=1&video=1&audio=1&chat=1&theme_color=amber) in your browser.
+---
 
-2. **Interact with Divya**:
-   - Divya starts every conversation with: "Hello, my name is Divya, the company receptionist, how may I help you today?"
-   - Example interactions:
-     - **Employee**: "Hi Divya, can you book me a meeting room?"
-       - Response: "Of course Rakesh, I’ll handle that right away. Meeting room booked successfully."
-     - **Candidate**: "Hi, I’m here for an interview with Mr. Sharma."
-       - Response: "Welcome, I see you’re scheduled with Mr. Sharma at 11 AM. Please wait in the lounge, someone will escort you shortly."
-     - **New Visitor**: "Hello"
-       - Response: "Hello, I don’t believe we’ve met before—may I know your name and purpose of visit?"
+## 🚀 Getting Started  
 
-3. **Available Tools**:
-   - **Weather**: `get_weather(city)` - Fetch weather for a city.
-   - **Web Search**: `search_web(query)` - Search the web using DuckDuckGo.
-   - **Email**: `send_email(to_email, subject, message, cc_email)` - Send an email via Gmail.
-   - **Person Lookup**: `get_person_details(name, person_type)` - Retrieve employee or candidate details.
+### 1. Clone the Repository  
+```bash
+git clone https://github.com/YOUR_USERNAME/virtual-receptionist.git
+cd virtual-receptionist
+```
 
-4. **Tavus Avatar**:
-   - When enabled, Divya appears as a realistic avatar powered by Tavus, providing a more engaging visual and voice-based interaction.
-   - Requires valid `PERSONA_ID`, `REPLICA_ID`, and `TAVUS_API_KEY` in the `.env` file.
-   - To disable Tavus, comment out the avatar session code in `agent.py`.
+### 2. Create Virtual Environment  
+```bash
+python -m venv venv
+# On macOS/Linux
+source venv/bin/activate
+# On Windows
+venv\Scripts\activate
+```
 
-## Project Structure
-- `agent.py`: Main script to initialize and run the assistant, including Tavus avatar integration.
-- `tools.py`: Contains tools for weather, email, web search, and person lookup.
-- `prompts.py`: Defines Divya’s persona, instructions, and session behavior.
-- `requirements.txt`: Lists Python dependencies, including `livekit-agents[tavus]`.
-- `.env`: Stores environment variables (not tracked in git).
-- `dummy-data/`: Directory for `employees.csv` and `candidates.csv`.
+### 3. Install Dependencies  
+```bash
+pip install -r requirements.txt
+```
 
-## Notes
-- **Tavus Integration**: The Tavus avatar session is commented out in `agent.py` by default. Uncomment and configure with valid Tavus credentials to enable the avatar feature. Ensure `PERSONA_ID`, `REPLICA_ID`, and `TAVUS_API_KEY` are correctly set in `.env`. Visit [Tavus Documentation](https://docs.tavus.io/) for setup details.
-- **Error Handling**: Tools include robust error handling with logging for debugging.
-- **Security**: Ensure sensitive data like API keys and Gmail credentials are stored securely in the `.env` file and not exposed in version control.
-- **Customization**: Modify `prompts.py` to adjust Divya’s tone, style, or capabilities.
+### 4. Configure Environment Variables  
+Create a `.env` file in the root directory with:  
 
-## Troubleshooting
-- **Missing CSV Files**: Ensure `employees.csv` and `candidates.csv` are in the correct directory.
-- **API Key Issues**: Verify all API keys in `.env` are valid, including Tavus credentials.
-- **Connection Errors**: Check `LIVEKIT_URL` and ensure your LiveKit server is running.
-- **Email Issues**: Confirm Gmail App Password is correctly set up (not your regular Gmail password).
-- **Tavus Errors**: Ensure Tavus API keys and IDs are correct. Check Tavus dashboard for valid `PERSONA_ID` and `REPLICA_ID`.
+```env
+# Gmail credentials (for sending OTPs & notifications)
+GMAIL_USER=yourcompanyemail@gmail.com
+GMAIL_APP_PASSWORD=xxxxxxx   # App-specific password
 
-## Acknowledgments
-- Built with [LiveKit](https://livekit.io/) for real-time communication.
-- Powered by [Tavus](https://www.tavus.io/) for realistic avatar interactions.
-- Inspired by the [LiveKit Tutorial on YouTube](https://youtu.be/An4NwL8QSQ4?si=1pLISaiUBGafE8XJ).
-- Uses Google’s RealtimeModel for LLM capabilities and DuckDuckGo for web searches.
+# Twilio (optional, for SMS support)
+TWILIO_SID=xxxxxxx
+TWILIO_AUTH=xxxxxxx
+TWILIO_FROM=+1234567890
+```
 
-## License
-This project is licensed under the MIT License.
+> ⚠️ Do **NOT** commit `.env` to GitHub (already ignored in `.gitignore`).  
+
+### 5. Prepare Data Files  
+Inside the `dummy-data/` folder, create these CSV files:  
+
+#### 📂 `employee_details.csv`  
+```csv
+Name,EmployeeID,Email,Phone
+Rakesh,E009,rakesh@company.com,+919876543210
+Rahul Kumar,E010,rahul@company.com,+919876543211
+```
+
+#### 📂 `candidate_interview.csv`  
+```csv
+Candidate Name,Interview Role,HR Coordinator,Interviewer,Interview Time,Interview Code
+Manish Patel,Business Analyst,Pooja Menon,Rahul Kumar,2025-09-04 14:30,INT009
+```
+
+#### 📂 `visitor_log.csv`  
+*(auto-generated, no need to pre-fill)*  
+```csv
+Visitor Name,Phone,Purpose,Meeting Employee,Timestamp
+```
+
+#### 📂 `manager_visit.csv`  
+```csv
+Manager Name,EmployeeID,Office,Visit Date
+Rakesh,E009,Chennai,2025-09-05
+```
+
+---
+
+## ▶️ Running the Project  
+
+Start the receptionist agent:  
+```bash
+python agent.py
+```
+
+Divya will now handle interactions according to `prompts.py` and your defined tools in `tools.py`.  
+
+---
+
+## 📂 Project Structure  
+
+```
+virtual-receptionist/
+├── agent.py                # Main agent logic
+├── tools.py                # Employee, Candidate, Visitor tools
+├── prompts.py              # Agent instructions
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
+├── dummy-data/             # Local data files (ignored in Git)
+│   ├── employee_details.csv
+│   ├── candidate_interview.csv
+│   ├── visitor_log.csv
+│   └── manager_visit.csv
+└── .gitignore
+```
+
+---
+
+## ⚡ Example Flows  
+
+### Employee Flow  
+```
+User: "I am Rakesh, employee ID E009."
+Divya: "Thanks Rakesh. Checking your record… I’ve sent an OTP to your email. Please tell me the OTP now."
+User: "123456"
+Divya: "✅ OTP verified. Welcome Rakesh!"
+```
+
+### Candidate Flow  
+```
+User: "I am Manish Patel, here for interview code INT009."
+Divya: "Thanks Manish. Checking your record… ✅ Please wait, Rahul Kumar will meet you shortly."
+```
+
+### Visitor Flow  
+```
+User: "I’m Anil Kumar, here to meet Rakesh."
+Divya: "Thanks Anil. Please provide your contact number."
+User: "+91 9876543210"
+Divya: "What is the purpose of your visit?"
+User: "Partnership discussion."
+Divya: "✅ I’ve logged your visit and informed Rakesh. Please wait at the reception."
+```
+
+### Manager Visit (VIP Greeting)  
+```
+User: "I am Rakesh, employee ID E009."
+Divya: "Thanks Rakesh. Checking your record… I’ve sent an OTP to your email. Please tell me the OTP now."
+User: "654321"
+Divya: "✅ OTP verified. Welcome Rakesh! 🎉 I see you’re visiting our Chennai office today. Wishing you a productive and pleasant visit 🚀"
+```
+
+---
+
+## 🛠 Troubleshooting  
+
+- **❌ Email not sending** → Check Gmail App Password & `.env` setup.  
+- **❌ Employee/Candidate not found** → Ensure CSV files are correctly formatted.  
+- **❌ OTP incorrect** → OTPs are session-based; ask Divya to resend.  
+- **FileNotFoundError** → Make sure CSV files exist in `dummy-data/`.  
+
+---
+
+## 🤝 Contributing  
+
+1. Fork this repo  
+2. Create a feature branch (`feature-new`)  
+3. Commit changes  
+4. Push to branch  
+5. Open a Pull Request  
+
+---
+
+## 📜 License  
+This project is licensed under the MIT License.  
