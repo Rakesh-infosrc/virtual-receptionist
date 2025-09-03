@@ -1,0 +1,14 @@
+     # # Initialize Tavus AvatarSession
+    # avatar = tavus.AvatarSession(
+    #     replica_id=os.environ.get("REPLICA_ID"),
+    #     persona_id=os.environ.get("PERSONA_ID"),
+    #     api_key=os.environ.get("TAVUS_API_KEY"),
+    # )
+
+    # # Debug prints for environment variables
+    # print("PERSONA_ID:", os.environ.get("PERSONA_ID"))
+    # print("REPLICA_ID:", os.environ.get("REPLICA_ID"))
+    # print("TAVUS_API_KEY:", os.environ.get("TAVUS_API_KEY"))
+
+    # # Start the avatar and wait for it to join
+    # await avatar.start(session, room=ctx.room)
